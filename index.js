@@ -1,7 +1,8 @@
 var ethUtil = require('ethereumjs-util')
 var sigUtil = require('eth-sig-util')
 var Eth = require('ethjs')
-var web3 = require('web3')
+var Web3 = require('web3')
+var web3 = new Web3()
 window.Eth = Eth
 console.log('new V2')
 var fs = require('fs')
