@@ -28,8 +28,8 @@ ethSignButton.addEventListener('click', function(event) {
     original_message.length.toString() +
     original_message
   );
-  var msgHash = message_hash
-  var from = web3.eth.getAccounts()[0]
+  var msgHash = web3.eth.accounts.hashMessage(original_message);
+  console.log(msgHash)
   if (!from) return connect()
   web3.eth.sign(from, msgHash, function (err, result) {
     if (err) return console.error(err)
@@ -43,7 +43,7 @@ personalSignButton.addEventListener('click', function(event) {
   var msg = ethUtil.bufferToHex(new Buffer(text, 'utf8'))
   // var msg = '0x1' // hexEncode(text)
   console.log(msg)
-  var from = web3.eth.accounts[0]
+  var from = web3.eth.getAccounts()[0]
   if (!from) return connect()
 
   /*  web3.personal.sign not yet implemented!!!
