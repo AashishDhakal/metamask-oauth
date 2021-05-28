@@ -1,6 +1,7 @@
 var ethUtil = require('ethereumjs-util')
 var sigUtil = require('eth-sig-util')
 var Eth = require('ethjs')
+var web3 = require('web3')
 window.Eth = Eth
 console.log('new V2')
 var fs = require('fs')
@@ -20,7 +21,7 @@ function connect () {
 ethSignButton.addEventListener('click', async function(event) {
   event.preventDefault()
   var original_message = 'An amazing message, for use with MetaMask!'
-  var message_hash = web3.sha3(
+  var message_hash = web3.utils.sha3(
     '\u0019Ethereum Signed Message:\n' +
     original_message.length.toString() +
     original_message
