@@ -27,6 +27,7 @@ ethSignButton.addEventListener('click', function(event) {
     original_message.length.toString() +
     original_message
   );
+  console.log(message_hash)
   var msgHash = message_hash
   var from = web3.eth.accounts[0]
   if (!from) return connect()
