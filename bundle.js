@@ -34,10 +34,7 @@ ethSignButton.addEventListener('click', function(event) {
   var from = '0xD7aFB34dbB1511Ce4a42BE0331A9e914A1cFd945'
   console.log(from)
   if (!from) return connect()
-  web3.eth.accounts.sign(msgHash, from, function (err, result) {
-    if (err) return console.error(err)
-    console.log('SIGNED:' + result)
-  })
+  web3.eth.sign(msgHash, from).then(console.log);
 })
 
 personalSignButton.addEventListener('click', function(event) {
