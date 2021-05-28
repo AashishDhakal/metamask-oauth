@@ -1,7 +1,6 @@
 var ethUtil = require('ethereumjs-util')
 var sigUtil = require('eth-sig-util')
 var Eth = require('ethjs')
-var web3 = require('web3')
 window.Eth = Eth
 console.log('new V2')
 var fs = require('fs')
@@ -26,8 +25,8 @@ ethSignButton.addEventListener('click', function(event) {
     original_message.length.toString() +
     original_message
   );
-  var msgHash = web3.eth.accounts.hashMessage(original_message);
-  console.log(msgHash)
+  var msgHash = message_hash
+  var from = web3.eth.getAccounts()[0]
   if (!from) return connect()
   web3.eth.sign(from, msgHash, function (err, result) {
     if (err) return console.error(err)
