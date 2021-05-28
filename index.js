@@ -7,10 +7,15 @@ console.log('new V2')
 var fs = require('fs')
 var terms = fs.readFileSync(__dirname + '/terms.txt').toString()
 
-if (typeof ethereum !== 'undefined') {
-  ethereum.enable()
-  var web3 = new Web3(Web3.currentProvider)
-  .catch(console.error)
+connectButton.addEventListener('click', function () {
+  connect()
+})
+
+function connect () {
+  if (typeof ethereum !== 'undefined') {
+    ethereum.enable()
+    .catch(console.error)
+  }
 }
 
 ethSignButton.addEventListener('click', function(event) {
