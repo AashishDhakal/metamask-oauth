@@ -29,10 +29,10 @@ ethSignButton.addEventListener('click', function(event) {
   );
   var msgHash = message_hash
   console.log(msgHash)
-  var from = web3.eth.getAccounts()[0]
+  var from = web3.eth.accounts[0]
   console.log(from)
   if (!from) return connect()
-  web3.eth.sign(msgHash, from, function (err, result) {
+  web3.eth.accounts.sign(msgHash, from, function (err, result) {
     if (err) return console.error(err)
     console.log('SIGNED:' + result)
   })
