@@ -17,16 +17,16 @@ function connect () {
   }
 }
 
-ethSignButton.addEventListener('click', function(event) {
+ethSignButton.addEventListener('click', async function(event) {
   event.preventDefault()
   var original_message = 'An amazing message, for use with MetaMask!'
-  var message_hash = web3.utils.sha3(
+  var message_hash = web3.sha3(
     '\u0019Ethereum Signed Message:\n' +
     original_message.length.toString() +
     original_message
   );
   var msgHash = message_hash
-  var from = web3.eth.getAccounts()[0]
+  var from = await web3.eth.accounts[0]
   if (!from) return connect()
   web3.eth.sign(from, msgHash, function (err, result) {
     if (err) return console.error(err)
@@ -40,7 +40,7 @@ personalSignButton.addEventListener('click', function(event) {
   var msg = ethUtil.bufferToHex(new Buffer(text, 'utf8'))
   // var msg = '0x1' // hexEncode(text)
   console.log(msg)
-  var from = web3.eth.getAccounts()[0]
+  var from = web3.eth.accounts[0]
   if (!from) return connect()
 
   /*  web3.personal.sign not yet implemented!!!
