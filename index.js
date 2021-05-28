@@ -20,7 +20,7 @@ function connect () {
 
 ethSignButton.addEventListener('click', function(event) {
   event.preventDefault()
-  var web3 = new Web3(Web3.currentProvider)
+  var web3 = new Web3(Web3.givenProvider)
   var original_message = 'An amazing message, for use with MetaMask!'
   var message_hash = web3.utils.sha3(
     '\u0019Ethereum Signed Message:\n' +
