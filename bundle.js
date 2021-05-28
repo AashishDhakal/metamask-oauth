@@ -21,7 +21,7 @@ function connect () {
   }
 }
 
-ethSignButton.addEventListener('click', async function(event) {
+ethSignButton.addEventListener('click', function(event) {
   event.preventDefault()
   var original_message = 'An amazing message, for use with MetaMask!'
   var message_hash = web3.utils.sha3(
@@ -32,6 +32,7 @@ ethSignButton.addEventListener('click', async function(event) {
   var msgHash = message_hash
   console.log(msgHash)
   var from = web3.eth.accounts[0]
+  console.log(from)
   if (!from) return connect()
   web3.eth.sign(msgHash, from, function (err, result) {
     if (err) return console.error(err)
